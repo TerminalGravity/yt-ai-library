@@ -1,4 +1,4 @@
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel, HttpUrl, ConfigDict
 from typing import List, Optional
 from datetime import datetime
 
@@ -28,8 +28,7 @@ class Channel(ChannelBase):
     created_at: datetime
     updated_at: Optional[datetime]
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class VideoBase(BaseModel):
     title: str
@@ -57,8 +56,7 @@ class Video(VideoBase):
     created_at: datetime
     updated_at: Optional[datetime]
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class VideoIngestRequest(BaseModel):
     video_ids: List[str]
